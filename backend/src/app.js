@@ -4,6 +4,8 @@ const morgan = require("morgan");
 
 const app = express();
 
+const authRoutes = require("./routes/auth.routes");
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,5 +17,7 @@ app.get("/", (req, res) => {
     message: "OnePool Marketplace API Running",
   });
 });
+
+app.use("/api/auth", authRoutes);
 
 module.exports = app;
